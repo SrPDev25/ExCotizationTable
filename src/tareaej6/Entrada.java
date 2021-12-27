@@ -15,7 +15,7 @@ public class Entrada {
     Integer hola=GregorianCalendar.DAY_OF_YEAR;
     Empleado[] empleados;
     GregorianCalendar fechaE=new GregorianCalendar();
-    Fecha fechaHoy=new Fecha(fechaE.get(GregorianCalendar.MONTH), fechaE.get(GregorianCalendar.DAY_OF_MONTH),fechaE.get(GregorianCalendar.YEAR));
+    Fecha fechaHoy=new Fecha(fechaE.get(GregorianCalendar.MONTH)+"/"+ fechaE.get(GregorianCalendar.DAY_OF_MONTH)+"/"+fechaE.get(GregorianCalendar.YEAR));
 
     public Entrada() {
         iniGruposCotizcion();
@@ -43,12 +43,12 @@ public class Entrada {
      */
     private void datosEmpleadosDefinidos() {
         empleados = new Empleado[]{
-            new Empleado("Antonio", 1, new Fecha(3, 6, 2000)),
-            new Empleado("Roberto", 2, new Fecha(30, 8, 2019)),
-            new Empleado("Ordo", 4, new Fecha(3, 6, 2005)),
-            new Empleado("Sara", 6, new Fecha(3, 6, 2021)),
-            new Empleado("Molly", 2, new Fecha(3, 6, 2005)),
-            new Empleado("Zelda", 7, new Fecha(3, 6, 1993))
+            new Empleado("Antonio", 1, new Fecha("3/ 6/ 2000")),
+            new Empleado("Roberto", 2, new Fecha(" 8/ 2019")),
+            new Empleado("Ordo", 4, new Fecha("3/ 6/ 2005")),
+            new Empleado("Sara", 6, new Fecha("3/ 6/ 2021")),
+            new Empleado("Molly", 2, new Fecha("3/ 6/ 2005")),
+            new Empleado("Zelda", 7, new Fecha("3/ 6/ 1993"))
         };
     }
     
