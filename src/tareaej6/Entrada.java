@@ -1,7 +1,11 @@
 
 package tareaej6;
 
+import numbers.Fecha;
 import java.util.GregorianCalendar;
+import numbers.InputNum;
+import numeros.Numero;
+import string.CharacthersString;
 
 /**
  *
@@ -11,15 +15,12 @@ public class Entrada {
 
     
     GCotizacion gruposC[]; //Array tipo GCotizacion donde se guardan los diferentes grupos y sus propiedades
-    GCotizacion eje = new GCotizacion(1, "", 2);
-    Integer hola=GregorianCalendar.DAY_OF_YEAR;
     Empleado[] empleados;
-    GregorianCalendar fechaE=new GregorianCalendar();
-    Fecha fechaHoy=new Fecha(fechaE.get(GregorianCalendar.MONTH)+"/"+ fechaE.get(GregorianCalendar.DAY_OF_MONTH)+"/"+fechaE.get(GregorianCalendar.YEAR));
-
+    Fecha fechaHoy=new Fecha();
+    
     public Entrada() {
+        fechaHoy.setToday();
         iniGruposCotizcion();
-        datosEmpleadosDefinidos();
     }
 
     /**
@@ -41,26 +42,44 @@ public class Entrada {
     /**
      * Inicializa la tabla de empleados predefinida
      */
-    private void datosEmpleadosDefinidos() {
+    public void datosEmpleadosDefinidos() {
         empleados = new Empleado[]{
-            new Empleado("Antonio", 1, new Fecha("3/ 6/ 2000")),
-            new Empleado("Roberto", 2, new Fecha(" 8/ 2019")),
-            new Empleado("Ordo", 4, new Fecha("3/ 6/ 2005")),
-            new Empleado("Sara", 6, new Fecha("3/ 6/ 2021")),
-            new Empleado("Molly", 2, new Fecha("3/ 6/ 2005")),
-            new Empleado("Zelda", 7, new Fecha("3/ 6/ 1993"))
+            new Empleado("Antonio", 1, "3/ 6/ 2000"),
+            new Empleado("Roberto", 2, " 8/ 2019"),
+            new Empleado("Ordo", 4, "3/ 6/ 2005"),
+            new Empleado("Sara", 6, "3/ 6/ 2021"),
+            new Empleado("Molly", 2, "3/ 6/ 2005"),
+            new Empleado("Zelda", 7, "3/ 6/ 1993")
         };
+    }
+    
+    /**
+     * Pide introducir todos los empleados de la compañia y todos sus datos
+     */
+    public void datosEmpleadosInput(){
+        int numEmpleados=InputNum.numIntGrater("¿Cuantos empleados hay en la empresa?: ", 1);
+        String nombre, fechaAlta;
+        int grupoCot;
+        empleados=new Empleado[numEmpleados];
+        for(int pos=0;pos<empleados.length;pos++){
+            System.out.println("\nEmpleado "+(pos+1));
+            nombre=CharacthersString.inputString("Introduzca le nombre del empleado: ");
+            grupoCot=InputNum.numIntBetween("Introduzca el grupo de cotización al que pertenece: ",1,gruposC.length);
+            fechaAlta=CharacthersString.inputString("Introduzca la fecha de alta en formato dd/mm/aaaa: ");
+            empleados[pos]=new Empleado(nombre,grupoCot,fechaAlta);
+        }
     }
     
     /**
      * Al llamar a este método se crea la tabla de aquellos que reciben cotización
      */
     public void tablaCotizados(){
+        
         System.out.println("\t\t\t\t\tINFORME ANUAL \n"
                 + "Nombre\tGrupo de cotización\tFecha de Alta\tQuinquenios\tImporte a percibir");
         for(int pos=0;pos<empleados.length;pos++){
             if(empleados[pos].quinquenios(fechaHoy)>0){
-                System.out.println( empleados[pos].getNombre()+"\t\t"+empleados[pos].getGrupoCotizacion()+"\t\t"+empleados[pos].getFecha()+"\t"+empleados[pos].quinquenios(fechaHoy)+"\t\t"+ calculoCuota(empleados[pos].getGrupoCotizacion(), pos)+" €");
+                System.out.println(empleados[pos].getNombre()+"\t\t"+empleados[pos].getGrupoCotizacion()+"\t\t"+empleados[pos].getFecha()+"\t"+empleados[pos].quinquenios(fechaHoy)+"\t\t"+ calculoCuota(empleados[pos].getGrupoCotizacion(), pos)+" €");
             }
         }
         

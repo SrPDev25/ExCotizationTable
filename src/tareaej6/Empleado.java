@@ -1,6 +1,8 @@
 
 package tareaej6;
 
+import numbers.Fecha;
+
 /**
  *
  * @author casa
@@ -15,12 +17,12 @@ public class Empleado {
      * Crea un objeto empleado
      * @param nombre String con el nombre del empleado
      * @param grupoCotizacion Integer con el grupo de cotizacion
-     * @param fechaE Fecha con la fecha de alta del empleado
+     * @param fechaE Fecha con la fecha de alta del empleado en formato dd/mm/aaaa
      */
-    public Empleado(String nombre, int grupoCotizacion, Fecha fechaE) {
+    public Empleado(String nombre, int grupoCotizacion, String fechaE) {
         this.nombre = nombre;
         this.grupoCotizacion = grupoCotizacion;
-        this.fechaAlta = fechaE;
+        this.fechaAlta = new Fecha (fechaE);
     }
 
     public void inputData(String nombre, short grupoCotizacion) {
@@ -36,7 +38,7 @@ public class Empleado {
      * @return Retorna el total de aquinquenios que lleva
      */
     public int quinquenios(Fecha fechaActual) {
-        int quinquenios = 0;
+        int quinquenios;
         int lastYear = 1; //incluye el ultimo año
         if (fechaActual.getMes() > fechaAlta.getMes()) {
             lastYear--;
@@ -63,5 +65,6 @@ public class Empleado {
     public int getGrupoCotizacion() {
         return grupoCotizacion;
     }
+
 
 }

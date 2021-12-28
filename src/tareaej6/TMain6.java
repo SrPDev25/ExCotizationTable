@@ -8,6 +8,8 @@ public class TMain6 {
         // TODO code application logic here
         Entrada entrada=new Entrada();
         
+        
+        entrada.datosEmpleadosInput();
         entrada.tablaCotizados();
     }
     
