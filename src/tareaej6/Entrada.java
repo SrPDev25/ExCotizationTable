@@ -4,7 +4,6 @@ package tareaej6;
 import numbers.Fecha;
 import java.util.GregorianCalendar;
 import numbers.InputNum;
-import numeros.Numero;
 import string.CharacthersString;
 
 /**

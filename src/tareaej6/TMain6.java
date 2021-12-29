@@ -9,6 +9,7 @@ public class TMain6 {
         Entrada entrada=new Entrada();
         
         
+        //entrada.datosEmpleadosDefinidos();//Para tabla de empleados predefinida
         entrada.datosEmpleadosInput();
         entrada.tablaCotizados();
     }
