@@ -94,4 +94,11 @@ public class Entrada {
         // cuota= Bgrupo*0.5+NQuinquenios*100
         return gruposC[grupo-1].getBaseMinima()*0.5+empleados[empleado].quinquenios(fechaHoy)*100;
     }
+    
+    private void printCotizationTable(){
+        for(int i=0;i<gruposC.length;i++){
+            
+        }
+        
+    }
 }
