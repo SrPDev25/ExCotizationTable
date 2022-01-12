@@ -43,12 +43,12 @@ public class Entrada {
      */
     public void datosEmpleadosDefinidos() {
         empleados = new Empleado[]{
-            new Empleado("Antonio", 1, "3/ 6/ 2000"),
-            new Empleado("Roberto", 2, " 28/8/ 2019"),
-            new Empleado("Ordo", 4, "3/ 6/ 2005"),
-            new Empleado("Sara", 6, "3/ 6/ 2021"),
-            new Empleado("Molly", 2, "3/ 6/ 2005"),
-            new Empleado("Zelda", 7, "3/ 6/ 1993")
+            new Empleado("Antonio", 1, "3/06/2000"),
+            new Empleado("Roberto", 2, "28/08/2019"),
+            new Empleado("Ordo", 4, "3/06/2005"),
+            new Empleado("Sara", 6, "3/06/2021"),
+            new Empleado("Molly", 2, "3/06/2005"),
+            new Empleado("Zelda", 7, "3/5/1993")
         };
     }
     

@@ -10,7 +10,7 @@ public class TMain6 {
         
         
         //entrada.datosEmpleadosDefinidos();//Para tabla de empleados predefinida
-        entrada.datosEmpleadosInput();
+        entrada.datosEmpleadosDefinidos();
         entrada.tablaCotizados();
     }
     
