@@ -3,7 +3,7 @@ package tareaej6;
 
 import numbers.Fecha;
 import java.util.GregorianCalendar;
-import numbers.InputNum;
+import numbers.EntradaNumeros;
 import string.CharacthersString;
 
 /**
@@ -44,7 +44,7 @@ public class Entrada {
     public void datosEmpleadosDefinidos() {
         empleados = new Empleado[]{
             new Empleado("Antonio", 1, "3/ 6/ 2000"),
-            new Empleado("Roberto", 2, " 8/ 2019"),
+            new Empleado("Roberto", 2, " 28/8/ 2019"),
             new Empleado("Ordo", 4, "3/ 6/ 2005"),
             new Empleado("Sara", 6, "3/ 6/ 2021"),
             new Empleado("Molly", 2, "3/ 6/ 2005"),
@@ -56,14 +56,14 @@ public class Entrada {
      * Pide introducir todos los empleados de la compañia y todos sus datos
      */
     public void datosEmpleadosInput(){
-        int numEmpleados=InputNum.numIntGrater("¿Cuantos empleados hay en la empresa?: ", 1);
+        int numEmpleados=EntradaNumeros.numIntGrater("¿Cuantos empleados hay en la empresa?: ", 1);
         String nombre, fechaAlta;
         int grupoCot;
         empleados=new Empleado[numEmpleados];
         for(int pos=0;pos<empleados.length;pos++){
             System.out.println("\nEmpleado "+(pos+1));
             nombre=CharacthersString.inputString("Introduzca le nombre del empleado: ");
-            grupoCot=InputNum.numIntBetween("Introduzca el grupo de cotización al que pertenece: ",1,gruposC.length);
+            grupoCot=EntradaNumeros.numIntBetween("Introduzca el grupo de cotización al que pertenece: ",1,gruposC.length);
             fechaAlta=CharacthersString.inputString("Introduzca la fecha de alta en formato dd/mm/aaaa: ");
             empleados[pos]=new Empleado(nombre,grupoCot,fechaAlta);
         }
