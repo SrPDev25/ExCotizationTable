@@ -63,6 +63,7 @@ public class Entrada {
         for(int pos=0;pos<empleados.length;pos++){
             System.out.println("\nEmpleado "+(pos+1));
             nombre=CharacthersString.inputString("Introduzca le nombre del empleado: ");
+            printCotizationTable();
             grupoCot=EntradaNumeros.numIntBetween("Introduzca el grupo de cotización al que pertenece: ",1,gruposC.length);
             fechaAlta=CharacthersString.inputString("Introduzca la fecha de alta en formato dd/mm/aaaa: ");
             empleados[pos]=new Empleado(nombre,grupoCot,fechaAlta);
@@ -96,8 +97,9 @@ public class Entrada {
     }
     
     private void printCotizationTable(){
+        System.out.println("\t\tTabla de grupos de cotización");
         for(int i=0;i<gruposC.length;i++){
-            
+            System.out.println(gruposC[i].getClave()+"."+gruposC[i].getCategoria());
         }
         
     }
