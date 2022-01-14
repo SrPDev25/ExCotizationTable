@@ -1,10 +1,8 @@
-
 package tareaej6;
 
-import numbers.Fecha;
-import java.util.GregorianCalendar;
-import numbers.EntradaNumeros;
-import string.CharacthersString;
+import inputs.EntradaNumeros;
+import inputs.EntradaTextos;
+import objects.Fecha;
 
 /**
  *
@@ -12,11 +10,10 @@ import string.CharacthersString;
  */
 public class Entrada {
 
-    
     GCotizacion gruposC[]; //Array tipo GCotizacion donde se guardan los diferentes grupos y sus propiedades
     Empleado[] empleados;
-    Fecha fechaHoy=new Fecha();
-    
+    Fecha fechaHoy = new Fecha();
+
     public Entrada() {
         fechaHoy.setToday();
         iniGruposCotizcion();
@@ -51,56 +48,64 @@ public class Entrada {
             new Empleado("Zelda", 7, "3/5/1993")
         };
     }
-    
+
     /**
      * Pide introducir todos los empleados de la compañia y todos sus datos
      */
-    public void datosEmpleadosInput(){
-        int numEmpleados=EntradaNumeros.numIntGrater("¿Cuantos empleados hay en la empresa?: ", 1);
-        String nombre, fechaAlta;
+    public void datosEmpleadosInput() {
+        int numEmpleados = EntradaNumeros.numIntGrater("¿Cuantos empleados hay en la empresa?: ", 1);
+        String nombre;
+        Fecha fechaAlta;
         int grupoCot;
-        empleados=new Empleado[numEmpleados];
-        for(int pos=0;pos<empleados.length;pos++){
-            System.out.println("\nEmpleado "+(pos+1));
-            nombre=CharacthersString.inputString("Introduzca le nombre del empleado: ");
+        empleados = new Empleado[numEmpleados];
+        for (int pos = 0; pos < empleados.length; pos++) {
+            System.out.println("\nEmpleado " + (pos + 1));
+            nombre = EntradaTextos.inputString("Introduzca le nombre del empleado: ");
             printCotizationTable();
-            grupoCot=EntradaNumeros.numIntBetween("Introduzca el grupo de cotización al que pertenece: ",1,gruposC.length);
-            fechaAlta=CharacthersString.inputString("Introduzca la fecha de alta en formato dd/mm/aaaa: ");
-            empleados[pos]=new Empleado(nombre,grupoCot,fechaAlta);
+            grupoCot = EntradaNumeros.numIntBetween("Introduzca el grupo de cotización al que pertenece: ", 1, gruposC.length);
+            fechaAlta = EntradaTextos.inputFechaPasada("Introduzca la fecha de alta en formato dd/mm/aaaa: ");
+            empleados[pos] = new Empleado(nombre, grupoCot, fechaAlta);
         }
     }
-    
+
     /**
-     * Al llamar a este método se crea la tabla de aquellos que reciben cotización
+     * Al llamar a este método se crea la tabla de aquellos que reciben
+     * cotización
      */
-    public void tablaCotizados(){
-        
+    public void tablaCotizados() {
+
         System.out.println("\t\t\t\t\tINFORME ANUAL \n"
                 + "Nombre\tGrupo de cotización\tFecha de Alta\tQuinquenios\tImporte a percibir");
-        for(int pos=0;pos<empleados.length;pos++){
-            if(empleados[pos].quinquenios(fechaHoy)>0){
-                System.out.println(empleados[pos].getNombre()+"\t\t"+empleados[pos].getGrupoCotizacion()+"\t\t"+empleados[pos].getFecha()+"\t"+empleados[pos].quinquenios(fechaHoy)+"\t\t"+ calculoCuota(empleados[pos].getGrupoCotizacion(), pos)+" €");
+        for (int pos = 0; pos < empleados.length; pos++) {
+            if (empleados[pos].quinquenios() > 0) {
+                System.out.println(empleados[pos].getNombre() + "\t\t" + empleados[pos].getGrupoCotizacion() + "\t\t" + empleados[pos].getFecha() + "\t" + empleados[pos].quinquenios() + "\t\t" + calculoCuota(empleados[pos].getGrupoCotizacion(), pos) + " €");
             }
         }
-        
+
     }
-    
+
     /**
      * Calculo de la cuota
+     *
      * @param grupo se inserta el grupo al que pertenece
      * @param empleado se inserta a que empleado se le hace
      * @return retorna el resultado
      */
-    private double calculoCuota(int grupo, int empleado){
+    private double calculoCuota(int grupo, int empleado) {
         // cuota= Bgrupo*0.5+NQuinquenios*100
-        return gruposC[grupo-1].getBaseMinima()*0.5+empleados[empleado].quinquenios(fechaHoy)*100;
+        return gruposC[grupo - 1].getBaseMinima() * 0.5 + empleados[empleado].quinquenios() * 100;
     }
+
     
-    private void printCotizationTable(){
+
+    /**
+     * Printea la tabla de cotización
+     */
+    private void printCotizationTable() {
         System.out.println("\t\tTabla de grupos de cotización");
-        for(int i=0;i<gruposC.length;i++){
-            System.out.println(gruposC[i].getClave()+"."+gruposC[i].getCategoria());
+        for (int i = 0; i < gruposC.length; i++) {
+            System.out.println(gruposC[i].getClave() + "." + gruposC[i].getCategoria());
         }
-        
+
     }
 }

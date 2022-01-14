@@ -1,7 +1,9 @@
 
 package tareaej6;
 
-import numbers.Fecha;
+import objects.Fecha;
+
+
 
 /**
  *
@@ -24,6 +26,12 @@ public class Empleado {
         this.grupoCotizacion = grupoCotizacion;
         this.fechaAlta = new Fecha (fechaE);
     }
+    
+    public Empleado(String nombre, int grupoCotizacion, Fecha fechaE) {
+        this.nombre = nombre;
+        this.grupoCotizacion = grupoCotizacion;
+        this.fechaAlta = fechaE;
+    }
 
     public void inputData(String nombre, short grupoCotizacion) {
         this.nombre = nombre;
@@ -33,19 +41,20 @@ public class Empleado {
     /**
      * Introduciendo la fecha actual calcula los quinquenios que lleva el
      * empleado
-     *
-     * @param fechaActual la fecha actual en objeto Fecha
      * @return Retorna el total de aquinquenios que lleva
      */
-    public int quinquenios(Fecha fechaActual) {
+    public int quinquenios() {
+        Fecha today=new Fecha();
+        today.setToday();//Fecha actual
         int quinquenios;
         int lastYear = 1; //incluye el ultimo año
-        if (fechaActual.getMes() > fechaAlta.getMes()) {
+        if (today.getMes() > fechaAlta.getMes()) {
             lastYear--;
-        } else if (fechaActual.getMes() == fechaAlta.getMes() && fechaActual.getDia() <= fechaAlta.getDia()) {
+        } else if (today.getMes() == fechaAlta.getMes() && today.getDia() >= fechaAlta.getDia()) {
             lastYear--;
         }
-        quinquenios = (fechaActual.getAnno() - fechaAlta.getAnno() - lastYear) / 5;
+        
+        quinquenios = (today.getAnno() - fechaAlta.getAnno() - lastYear) / 5;
         return quinquenios;
     }
 

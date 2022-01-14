@@ -28,6 +28,7 @@ public class GCotizacion {
         this.baseMinima = baseMinima;
     }
 
+    
     public int getClave() {
         return clave;
     }

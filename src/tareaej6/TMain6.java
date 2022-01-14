@@ -8,8 +8,6 @@ public class TMain6 {
         // TODO code application logic here
         Entrada entrada=new Entrada();
         
-        
-        //entrada.datosEmpleadosDefinidos();//Para tabla de empleados predefinida
         entrada.datosEmpleadosInput();
         entrada.tablaCotizados();
     }
