@@ -10,9 +10,9 @@ import objects.Fecha;
  */
 public class Entrada {
 
-    GCotizacion gruposC[]; //Array tipo GCotizacion donde se guardan los diferentes grupos y sus propiedades
-    Empleado[] empleados;
-    Fecha fechaHoy = new Fecha();
+    private GCotizacion gruposC[]; //Array tipo GCotizacion donde se guardan los diferentes grupos y sus propiedades
+    private Empleado[] empleados;
+    private Fecha fechaHoy = new Fecha();
 
     public Entrada() {
         fechaHoy.setToday();
