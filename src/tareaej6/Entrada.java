@@ -12,10 +12,10 @@ public class Entrada {
 
     private GCotizacion gruposC[]; //Array tipo GCotizacion donde se guardan los diferentes grupos y sus propiedades
     private Empleado[] empleados;
-    private Fecha fechaHoy = new Fecha();
+   
 
     public Entrada() {
-        fechaHoy.setToday();
+       
         iniGruposCotizcion();
     }
 
@@ -53,6 +53,8 @@ public class Entrada {
      * Pide introducir todos los empleados de la compañia y todos sus datos
      */
     public void datosEmpleadosInput() {
+        Fecha fechaHoy = new Fecha();
+         fechaHoy.setToday();
         int numEmpleados = EntradaNumeros.numIntGrater("¿Cuantos empleados hay en la empresa?: ", 1);
         String nombre;
         Fecha fechaAlta;
